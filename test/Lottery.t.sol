@@ -135,9 +135,12 @@ contract LotteryTest is Test {
         lottery.draw();
 
         lottery.claim();
+        console.log("receive_msg.value: ", received_msg_value);
         assertEq(received_msg_value, 0.1 ether);
 
         vm.prank(address(1));
+        console.log("address(1).balance", address(1).balance);
+
         lottery.claim();
         assertEq(address(1).balance, 0.1 ether);
     }
